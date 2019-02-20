@@ -60,7 +60,7 @@ async def analyze(request):
 
     #prediction, label, probability = learn.predict(img)
     
-    return JSONResponse({'rate': str(samplerate, 'length':str(len(data)/samplerate)})
+    return JSONResponse({'rate': str(samplerate), 'length':str(len(data)/samplerate)})
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app=app, host='0.0.0.0', port=5042)
