@@ -2,7 +2,7 @@ from starlette.applications import Starlette
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 from starlette.middleware.cors import CORSMiddleware
-import uvicorn, aiohttp, asyncio, libros
+import uvicorn, aiohttp, asyncio, librosa
 import soundfile as sf
 from io import BytesIO
 
