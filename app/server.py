@@ -2,7 +2,8 @@ from starlette.applications import Starlette
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 from starlette.middleware.cors import CORSMiddleware
-import uvicorn, aiohttp, asyncio
+import uvicorn, aiohttp, asyncio, libros
+import soundfile as sf
 from io import BytesIO
 
 from fastai import *
@@ -51,11 +52,15 @@ def index(request):
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
     data = await request.form()
-    img_bytes = await (data['file'].read())
-    img = open_image(BytesIO(img_bytes))
-    prediction, label, probability = learn.predict(img)
+    audio_bytes = await (data['file'].read())
+    # with(open('recording.wav', mode='bx') as f):
+        #f.write(BytesIO(audio_bytes))
+    audio_bytes_IO = BytesIO(audio_bytes)
+    data, samplerate = sf.read(audio_bytes_IO)
+
+    #prediction, label, probability = learn.predict(img)
     
-    return JSONResponse({'result': str(prediction), 'probability':str(probability)})
+    return JSONResponse({'rate': str(samplerate, 'length':str(len(data)/samplerate)})
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app=app, host='0.0.0.0', port=5042)

@@ -24,8 +24,8 @@ function analyze() {
     xhr.onload = function(e) {
         if (this.readyState === 4) {
             var response = JSON.parse(e.target.responseText);
-            el('result-label').innerHTML = `Result = ${response['result']}`;
-            el('probability-label').innerHTML = `Result = ${response['probability']}`;
+            el('rate-label').innerHTML = `Sample Rate = ${response['rate']}`;
+            el('length-label').innerHTML = `Audio Length = ${response['length']}`;
         }
         el('analyze-button').innerHTML = 'Analyze';
     }
