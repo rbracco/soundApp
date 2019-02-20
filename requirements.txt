@@ -9,3 +9,4 @@ aiofiles
 aiohttp
 librosa
 soundfile
+pysoundfile
