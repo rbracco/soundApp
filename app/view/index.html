@@ -9,7 +9,7 @@
     <div class='center'>
         <div class='title'>Word Syllable Counter</div>
         <p>
-            Say a single word into the mic and see if the computer can count the number of syllables
+            Say a word into the mic and see if the computer can count the number of syllables
         </p>
         <p>
             <strong>Now we even show probabilities our model predicts!</strong>
@@ -21,15 +21,13 @@
                        type='file'
                        name='file'
                        accept='audio/*'
-                       onchange='showPicked(this)' capture>
+                       capture>
             </div>
             <button class='choose-file-button' type='button' onclick='showPicker()'>Select Audio</button>
             <div class='upload-label'>
                 <label id='upload-label'>No file chosen</label>
             </div>
-            <div>
-                <img id='image-picked' class='no-display' alt='Chosen Image' height='200'>
-            </div>
+            
             <div class='analyze'>
                 <button id='analyze-button' class='analyze-button' type='button' onclick='analyze()'>Analyze</button>
             </div>
