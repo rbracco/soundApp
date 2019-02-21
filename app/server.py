@@ -53,8 +53,8 @@ def index(request):
 async def analyze(request):
     data = await request.form()
     audio_bytes = await (data['file'].read())
-    with(open('recording.wav', mode='bx') as f):
-        f.write(BytesIO(audio_bytes))
+    #with open('recording.wav', 'bx') as f:
+        #f.write(BytesIO(audio_bytes))
     audio_bytes_IO = BytesIO(audio_bytes)
     data, samplerate = sf.read(audio_bytes_IO)
 
