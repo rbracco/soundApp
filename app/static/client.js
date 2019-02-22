@@ -27,13 +27,13 @@ function analyze() {
     xhr.onerror = function() {alert (xhr.responseText);}
     xhr.onload = function(e) {
         if (this.readyState === 4) {
+            el('analyze-button').innerHTML = '5...';
             var response = JSON.parse(e.target.responseText);
             el('rate-label').innerHTML = `Sample Rate = ${response['rate']}`;
             el('length-label').innerHTML = `Audio Length = ${response['length']}`;
         }
         el('analyze-button').innerHTML = 'Analyze';
     }
-    el('analyze-button').innerHTML = '4...';
     var fileData = new FormData();
     fileData.append('file', uploadFiles[0]);
     xhr.send(fileData);
