@@ -19,8 +19,11 @@ function analyze() {
 
     el('analyze-button').innerHTML = 'Analyzing...';
     var xhr = new XMLHttpRequest();
+    el('analyze-button').innerHTML = '1...';
     var loc = window.location
+    el('analyze-button').innerHTML = '2...';
     xhr.open('POST', `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`, true);
+    el('analyze-button').innerHTML = '3...';
     xhr.onerror = function() {alert (xhr.responseText);}
     xhr.onload = function(e) {
         if (this.readyState === 4) {
@@ -30,7 +33,7 @@ function analyze() {
         }
         el('analyze-button').innerHTML = 'Analyze';
     }
-
+    el('analyze-button').innerHTML = '4...';
     var fileData = new FormData();
     fileData.append('file', uploadFiles[0]);
     xhr.send(fileData);
